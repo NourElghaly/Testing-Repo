@@ -7,6 +7,14 @@ WelcomeWindow::WelcomeWindow(QWidget *parent)
     , ui(new Ui::WelcomeWindow)
 {
     ui->setupUi(this);
+
+    QPixmap pix ("C:/Users/Nour/Desktop/Cinema_Booking/image.jpeg");
+    if (pix.isNull()) {
+        qDebug() << "Failed to load image";
+    } else {
+        ui->theaterimage->setPixmap(pix.scaled(200,200));
+    }
+
 }
 
 WelcomeWindow::~WelcomeWindow()
@@ -14,4 +22,4 @@ WelcomeWindow::~WelcomeWindow()
     delete ui;
 }
 
-QPixmap pix ("C:/Users/Nour/Desktop/Cinema_Booking/theater.jpg");
+
