@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Loginwindow;
@@ -24,5 +25,7 @@ private slots:
 
 private:
     Ui::Loginwindow *ui;
+    QString name;
+    QString password;
 };
 #endif // LOGINWINDOW_H

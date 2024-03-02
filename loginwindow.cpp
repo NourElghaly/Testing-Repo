@@ -2,13 +2,19 @@
 #include "ui_loginwindow.h"
 #include "welcomewindow.h"
 #include "registerwindow.h"
+#include "Users.h"
+
+
 
 Loginwindow::Loginwindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Loginwindow)
 {
     ui->setupUi(this);
+    ui->errormsg->setVisible(false);
+
 }
+
 
 Loginwindow::~Loginwindow()
 {
@@ -16,12 +22,30 @@ Loginwindow::~Loginwindow()
 }
 
 
-
 void Loginwindow::on_pushButtonLogin_clicked()
 {
-    hide();
-    WelcomeWindow* welcomewindow=new WelcomeWindow(this);
-    welcomewindow->show();
+    name=ui->lineEditUsername->text();
+    password=ui->lineEditPassword->text();
+    bool isValid=false;
+
+    for (int i=0; i<100; i++){
+        if (name == usernames[i] && password == passwords [i])
+         {
+            isValid = true;
+            break;
+         }
+    }
+
+    if(isValid){
+        hide();
+        WelcomeWindow* welcomewindow = new WelcomeWindow(this);
+        welcomewindow->show();
+    }
+
+    else{
+        ui->errormsg->setVisible(true);
+    }
+
 }
 
 
@@ -32,4 +56,5 @@ void Loginwindow::on_pushButtonRegister_clicked()
     registerwindow->show();
 
 }
+
 
